@@ -1,21 +1,19 @@
 #include <SerialCommand.h>
-int redPin = 9;
-int greenPin = 10;
-int bluePin = 11;
-int builtin = 14;
-int buttonUp = 3;
-int buttonDown = 2;
-int buttonSelect = 8;
-int redLed = 14;
-int greenLed = 15;
-int blueLed = 16;
-volatile long lastTime = 0;
-volatile int r = 0;
-volatile int g = 0;
-volatile int b = 0;
-volatile int token = 0;
-volatile int select = 0;
-int minDelay = 500;
+#define redPin 9
+#define greenPin 10
+#define bluePin 11
+#define builtin 14
+#define buttonUp 3
+#define buttonDown 2
+#define buttonSelect 8
+#define redLed 14
+#define greenLed 15
+#define blueLed 16
+volatile byte r = 0;
+volatile byte g = 0;
+volatile byte b = 0;
+volatile byte token = 0;
+byte minDelay = 500;
 SerialCommand sCmd;
 
 void serialEvent() {
@@ -59,19 +57,19 @@ void loop() {
 	if (token == 3) {
 	  token=0;
 	}
-	select = token + 14;
-    	digitalWrite((select),HIGH);
+	token + 14 = token + 14;
+    	digitalWrite((token + 14),HIGH);
         delay (minDelay);
     }
-    digitalWrite((select),LOW);
+    digitalWrite((token + 14),LOW);
     delay(200);
     setColor(r,g,b);
 }
 
 void processCommand () {
   char *arg;
-  int levels[3];
-  int count=0;
+  byte levels[3];
+  byte count=0;
   arg = sCmd.next();
   while (arg != NULL || count < 3) {
     Serial.print("Arg received: ");
