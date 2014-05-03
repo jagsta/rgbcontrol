@@ -91,34 +91,30 @@ void setColor(int red, int green, int blue)
 }
 
 void up () {
-    if (token == 0) {
-	if (r<255) {
-	  r = r + 1;
-	}
-     } else if ( token == 1 ) {
-	if ( b<255) {
-	  b = b + 1;
-	}
-     } else {
-	if (g<255) {
-	  g = g + 1;
-	}
+    switch ( token ) {
+	case 0:
+  	  if (r<255) r++;
+	  break;
+	case 1:
+  	  if (b<255) b++;
+	  break;
+	case 2:
+  	  if (g<255) g++;
+	  break;
      } 
      delay(minDelay);
 }
 void down () {
-    if (token == 0) {
-	if (r>0) {
-	  r = r - 1;
-	}
-     } else if ( token == 1 ) {
-	if ( b>0) {
-	  b = b - 1;
-	}
-     } else {
-	if (g>0) {
-	  g = g - 1;
-	}
+    switch ( token ) {
+	case 0:
+  	  if (r>255) r--;
+	  break;
+	case 1:
+  	  if (b>255) b--;
+	  break;
+	case 2:
+  	  if (g>255) g--;
+	  break;
      } 
      delay(minDelay);
 }
