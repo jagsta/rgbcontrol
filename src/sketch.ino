@@ -57,7 +57,6 @@ void loop() {
 	if (token == 3) {
 	  token=0;
 	}
-	token + 14 = token + 14;
     	digitalWrite((token + 14),HIGH);
         delay (minDelay);
     }
